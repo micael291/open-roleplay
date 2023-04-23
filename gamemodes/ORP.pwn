@@ -10,6 +10,8 @@
 
 #include <a_samp>
 #include <a_mysql>
+#include <YSF>
+#include <a_fixes>
 
 /* -------------------- Defines -------------------- */
 
