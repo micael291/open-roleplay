@@ -1,10 +1,10 @@
-### Open SA-MP
+### Open Roleplay
 An unique roleplay experience based on San Andreas Multiplayer.
 
 ### Compiling
 
 - Open project folder in [Visual Studio Code](https://code.visualstudio.com).
-- Modify `ORPG.pwn` from `gamemodes` folder.
+- Modify `ORP.pwn` from `gamemodes` folder.
 - Press `CTRL+SHIFT+B` to compile the scripts.
 
 > To add required files for the [compiler](https://github.com/pawn-lang/compiler) like `.inc` files put them into `include` folder in `compiler` folder.
@@ -18,6 +18,6 @@ Contributions are always welcome!
 
 ### License
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/opencmty/opensamp/blob/main/LICENSE)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/opencmty/open-roleplay/blob/main/LICENSE)
 
-© [Open SA-MP](https://github.com/opencmty/opensamp) by [Open Community](https://github.com/opencmty)
+© [Open Roleplay](https://github.com/opencmty/open-roleplay) by [Open Community](https://github.com/opencmty)
