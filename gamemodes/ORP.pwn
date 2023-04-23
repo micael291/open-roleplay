@@ -1,7 +1,7 @@
 /*
  *  
  *  IN THE NAME OF GOD
- *  OPEN RPG (FROM OPEN COMMUNITY) PROJECT BY MOHNY AND THE OTHER CONTRIBUTORS
+ *  OPEN RP (FROM OPEN COMMUNITY) PROJECT BY MOHNY AND THE OTHER CONTRIBUTORS
  *  https://github.com/opencmty
  *
  */
@@ -9,8 +9,17 @@
 /* -------------------- Includes -------------------- */
 
 #include <a_samp>
+#include <a_mysql>
 
 /* -------------------- Defines -------------------- */
+
+#define Public%0(%1) forward %0(%1); public %0(%1)
+
+/* -------------------- Public Variables -------------------- */
+
+static MySQL:SQL;
+
+/* -------------------- Private Variables -------------------- */
 
 /* -------------------- Natives -------------------- */
 
@@ -18,15 +27,39 @@ main()
 {
     print(" ");
     print("| --------------------------------- |");
-    print("|    Open RPG, by Open Community    |");
+    print("|    Open RP From Open Community    |");
     print("|    https://github.com/opencmty    |");
     print("| --------------------------------- |");
     print(" ");
 }
 
+/* -------------------- Functions -------------------- */
+
+InitSQL()
+{
+    if (GetMaxPlayers() > MAX_PLAYERS) 
+    {
+        printf("[SQL] MAX_PLAYERS in server.cfg (%i) > MAX_PLAYERS in mode (%i)", GetMaxPlayers(), MAX_PLAYERS);
+        SendRconCommand("EXIT");
+        return 0;
+    }
+    if (mysql_errno((SQL = mysql_connect_file())) || SQL == MYSQL_INVALID_HANDLE) 
+    {
+        printf("[SQL] Server is unable to connect to the database");
+        SendRconCommand("EXIT");
+        return 0;
+    }
+    printf("[SQL] Server is connected to the database");
+    return 1;
+}
+
+/* -------------------- Callbacks -------------------- */
+
 public OnGameModeInit()
 {
-    SetGameModeText("Open RPG v1.0.0");
+    InitSQL();
+
+    SetGameModeText("Open RP v1.0.0");
     AddPlayerClass(0, 2495.3547, -1688.2319, 13.6774, 351.1646, WEAPON_M4, 500, WEAPON_KNIFE, 1, WEAPON_COLT45, 100);
     AddStaticVehicle(522, 2493.7583, -1683.6482, 12.9099, 270.8069, -1, -1);
     return 1;
@@ -333,7 +366,5 @@ public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_
 {
     return 1;
 }
-
-/* -------------------- Functions -------------------- */
 
 /* -------------------- Commands -------------------- */
